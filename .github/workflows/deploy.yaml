@@ -1,16 +1,21 @@
-name: CI
-​
+name: Node.js CD
+
 on:
-    push:
-        branches: [ master ]
-    
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [master]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-    deploy:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+        deploy:
         runs-on: self-hosted
     
     strategy: 
         matrix:
-            node-version: [18.x]
+            node-version: [12.x]
             
     steps:
       - uses: actions/checkout@v2
